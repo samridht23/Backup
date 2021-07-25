@@ -10,14 +10,24 @@ set sw=4
 set si
 
 call plug#begin('~/.vim/plugged')
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'searleser97/cpbooster.vim'
 call plug#end()
 
+let g:airline_theme='alduin'
 
+autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
+
+"copying element to system clipboard
+vnoremap <C-c> "+y :let @+=@*<CR>
+"pasting element from system clipboard to vim
+map <C-v> "+P
 
 autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
 autocmd filetype cpp nnoremap <F10> :!%:r<CR>
@@ -56,4 +66,4 @@ function MyDiff()
   if exists('l:shxq_sav')
     let &shellxquote=l:shxq_sav
   endif
-endfunction
+e
