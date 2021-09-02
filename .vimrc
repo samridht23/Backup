@@ -66,4 +66,4 @@ function MyDiff()
   if exists('l:shxq_sav')
     let &shellxquote=l:shxq_sav
   endif
-e
+endfunction
