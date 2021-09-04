@@ -1,6 +1,3 @@
-source $VIMRUNTIME/vimrc_example.vim
-
-au GUIEnter * simalt ~x
 set hls
 set is
 set cb=unnamed
@@ -8,32 +5,34 @@ set gfn=Fixedsys:h10
 set ts=4
 set sw=4
 set si
+set nu
 
-call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'searleser97/cpbooster.vim'
-call plug#end()
-
-let g:airline_theme='alduin'
-
-autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
-autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
 
+"Compiling the cpp file
+autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
+autocmd filetype cpp nnoremap <F10> :!%:r<CR>
+autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
+
+"Plug Plugin manager
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+call plug#end()
+
+"airline theme
+let g:airline_theme='violet'
 "copying element to system clipboard
 vnoremap <C-c> "+y :let @+=@*<CR>
 "pasting element from system clipboard to vim
 map <C-v> "+P
 
-autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
-autocmd filetype cpp nnoremap <F10> :!%:r<CR>
-autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
+"move to the next function bracket
+noremap <TAB> %
 
-set nu
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
@@ -48,6 +47,12 @@ function MyDiff()
   let arg1 = v:fname_in
   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
   let arg1 = substitute(arg1, '!', '\!', 'g')
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
   if $VIMRUNTIME =~ ' '
     if &sh =~ '\<cmd'
       if empty(&shellxquote)
