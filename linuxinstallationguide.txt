@@ -8,3 +8,7 @@ install google chrome
 set up vimrc
 update all the dependencies
 install git
+install g++
+
+To add wallpaper to i3
+install feh
