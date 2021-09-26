@@ -1,14 +1,35 @@
 Update vim (because old vi does not support plugin manager so update to latest version)
+
 install terminator
+sudo apt install terminator
+
 install hack nerd font 
+https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete
+
 install gtkvim
+sudo apt install vim-gtk3(for Ubuntu 20.04)
+
 install i3
+sudo apt install i3
+
+install curl
+sudo apt install curl
+
 install plug plugin manager
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 install google chrome
 set up vimrc
+
 update all the dependencies
+
 install git
+sudo apt install git
+
 install g++
+sudo apt install g++
 
 To add wallpaper to i3
 install feh
+sudo apt install feh
