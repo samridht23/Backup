@@ -32,8 +32,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```sudo apt install feh```
 
 ## All
-'''
+```
 sudo apt install vim && apt install terminator && apt install vim-gtk3 && apt install i3 && apt install curl && apt install git && apt install g++ && apt install feh
-'''
+```
 
 
