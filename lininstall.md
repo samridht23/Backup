@@ -1,34 +1,34 @@
-##Install vim
+## Install vim
 'sudo apt install vim'
 
-##Terminator
+## Terminator
 'sudo apt install terminator'
 
-##Hack Nerd Font
+## Hack Nerd Font
 [Link](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack/Regular/complete)
 
-##GTKVim
+## GTKVim
 'sudo apt install vim-gtk3'
 
-##i3wm
+## i3wm
 'sudo apt install i3'
 
-##curl
+## curl
 'sudo apt install curl'
 
-##Plug Plugin Manager
+## Plug Plugin Manager
 '''
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 '''
 
-##Git
+## Git
 'sudo apt install git
 
-##g++
+## g++
 'sudo apt install g++'
 
-##feh
+## feh
 'sudo apt install feh'
 
 
