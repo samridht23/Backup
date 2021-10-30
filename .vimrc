@@ -12,10 +12,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
+Plug 'vbundles/nerdtree'
 call plug#end()
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-let g:airline_theme='violet'
-
+let g:airline_theme='angr'
+let g:airline_powerline_fonts = 1
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
