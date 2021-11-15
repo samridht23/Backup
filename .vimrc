@@ -12,8 +12,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
-Plug 'vbundles/nerdtree'
+Plug 'preservim/nerdtree'
 call plug#end()
+nnoremap <C-n> :NERDTreeToggle<CR>
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:airline_theme='angr'
 let g:airline_powerline_fonts = 1
