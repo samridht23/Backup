@@ -180,5 +180,5 @@ bar {
         #status_command i3status
         font pango:Hack Nerd Font 7 
 	status_command ~/.config/bumblebee-status/bumblebee-status -m disk nic memory cpu battery datetime \
-	-t solarized-powerline
+	-t greyish-powerline
 }
