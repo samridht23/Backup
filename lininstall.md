@@ -33,7 +33,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 ## All
 ```
-sudo apt install vim && sudo apt install terminator && sudo apt install vim-gtk3 && sudo apt install i3 && sudo apt install curl && sudo apt install git && sudo apt install g++ && sudo apt install feh && sudo apt install guake && sudo apt install snapd 
+sudo apt install vim && sudo apt install terminator && sudo apt install vim-gtk3 && sudo apt install i3 && sudo apt install curl && sudo apt install git && sudo apt install g++ && sudo apt install feh && sudo apt install guake && sudo apt install snapd -y
 ```
 
 
