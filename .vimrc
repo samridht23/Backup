@@ -16,8 +16,6 @@ Plug 'preservim/nerdtree'
 call plug#end()
 nnoremap <C-n> :NERDTreeToggle<CR>
 autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:airline_theme='angr'
 let g:airline_powerline_fonts = 1
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
