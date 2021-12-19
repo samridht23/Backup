@@ -8,27 +8,34 @@ set gfn=Fixedsys:h10
 set ts=4
 set sw=4
 set si 
+set nu
+
+"Plug plugin manager
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
 call plug#end()
+
+"Nerd tree command
 nnoremap <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree | wincmd p
+
+"Airline config
 let g:airline_theme='angr'
 let g:airline_powerline_fonts = 1
+
+"cpp template 
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+"Auto indentation of bracket 
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
+"For copy and pasting in vim
 vnoremap <C-c> "+y :let @+=@*<CR>
 map <C-v> "+P
-autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++14 % -o %:r -Wl,--stack,268435456<CR>
-autocmd filetype cpp nnoremap <F10> :!%:r<CR>
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
-set nu
 augroup numbertoggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set rnu
