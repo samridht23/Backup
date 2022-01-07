@@ -16,8 +16,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chiel92/vim-autoformat'
 Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'mattn/emmet-vim'
 call plug#end()
-
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key = ','
+au BufNewFile,BufRead *.handlebars set filetype=html
 "Nerd tree command
 nnoremap <C-n> :NERDTreeToggle<CR>
 
@@ -27,6 +32,8 @@ let g:airline_powerline_fonts = 1
 
 "cpp template 
 autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
+autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+autocmd BufNewFile *.hbs 0r ~/.vim/templates/skeleton.hbs
 "Auto indentation of bracket 
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
