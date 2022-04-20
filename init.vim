@@ -1,58 +1,115 @@
-set relativenumber
-set guicursor=i:block
-syntax enable
+filetype plugin on
 
-"Plugins
-call plug#begin("~/.vim/plugged")
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'rakr/vim-one'
+Plug 'tpope/vim-commentary'
+Plug 'mattn/emmet-vim'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug'vim-airline/vim-airline'
-Plug'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'npm install',
+      \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact'] }
+Plug 'jparise/vim-graphql'
+Plug 'elixir-editors/vim-elixir'
+Plug 'pantharshit00/vim-prisma'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}
+
+"Plug 'vimsence/vimsence'
+Plug 'andweeb/presence.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/nvim-bufferline.lua'
+Plug 'hoob3rt/lualine.nvim'
 call plug#end()
 
-"Nerd Tree config
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-"Automaticaly close nvim if NERDTree is only thing left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"Toggle Nerd Tree
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+if has('termguicolors')
+  set termguicolors
+endif
 
-"Fuzzy Finder
-nnoremap <C-p> :FZF<CR>
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
+set background=dark
+color one
+let g:one_allow_italics=1
+if &background ==# 'dark'
+  call one#highlight('Normal', '', '0F1219', 'none')
+  call one#highlight('SignColumn', '', '161D26', 'none')
+  call one#highlight('CursorLine', '', '161D26', 'none')
+  call one#highlight('CursorLineNr', '', '161D26', 'none')
+  call one#highlight('CursorColumn', '', '161D26', 'none')
+  call one#highlight('LineNr', '', '161D26', 'none')
+  call one#highlight('VertSplit', '0F141A', '0F141A', 'none')
+  call one#highlight('NonText', '1D2632', '', 'none')
+  call one#highlight('SpecialKey', '1D2632', '', 'none')
+  call one#highlight('Keyword', '', '', 'italic')
+  call one#highlight('DiffAdd', '52ACB8', '', '')
+endif
+
+let g:user_emmet_mode='n'
+let g:user_emmet_leader_key=','
+set exrc
+set secure
+set clipboard=unnamedplus
+set mouse=a
+set nowrap
+set textwidth=0
+set wrapmargin=0
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set nosmarttab
+set autoindent
+set nu rnu
+set incsearch
+set inccommand=split
+set showmatch
+set showtabline=1
+set noshowmode
+
+augroup LuaHighlight
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
+"Show spaces and tabs
+set list
+set listchars=space:·,tab:→\ 
+
+let mapleader = ","
+nmap <Leader>s :source ~/.config/nvim/init.vim<cr>
+nmap <Leader>c <Plug>CommentaryLine
+xmap <Leader>c <Plug>Commentary
+
+map <C-l> :set spell! spelllang=en_us<cr>
+
+nnoremap <leader>o :!tmux splitw -h -p 30 -c $(pwd)<CR><C-L>
+nnoremap <leader>t :!tmux send-keys -t 1 C-c<CR><C-L>
+
 "Auto Indentation
 inoremap { {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
 inoremap {{ {
 inoremap {} {}
 
-"Copying to clipboard
-vnoremap <C-c> "+y :let @+=@*<CR>
-map <C-v> "+P
 
-"Airline config
-let g:airline_powerline_fonts = 1
-let g:airline_theme='angr'
-
-"Tab length config
-set expandtab
-set shiftwidth=4
-
-
-colorscheme gruvbox
+imap "" ""<esc>i
+imap '' ''<esc>i
+imap `` ``<esc>i
+imap (( ()<esc>i
+imap \[\[ \[\]<esc>i
+imap {{ {}<esc>i
