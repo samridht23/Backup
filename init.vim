@@ -16,6 +16,7 @@ Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'Yggdroot/indentLine'
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'rust-lang/rust.vim'
@@ -32,32 +33,14 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}
 
 "Plug 'vimsence/vimsence'
+
 Plug 'andweeb/presence.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'hoob3rt/lualine.nvim'
 call plug#end()
 
-if has('termguicolors')
-  set termguicolors
-endif
-
-set background=dark
-color one
 let g:one_allow_italics=1
-if &background ==# 'dark'
-  call one#highlight('Normal', '', '0F1219', 'none')
-  call one#highlight('SignColumn', '', '161D26', 'none')
-  call one#highlight('CursorLine', '', '161D26', 'none')
-  call one#highlight('CursorLineNr', '', '161D26', 'none')
-  call one#highlight('CursorColumn', '', '161D26', 'none')
-  call one#highlight('LineNr', '', '161D26', 'none')
-  call one#highlight('VertSplit', '0F141A', '0F141A', 'none')
-  call one#highlight('NonText', '1D2632', '', 'none')
-  call one#highlight('SpecialKey', '1D2632', '', 'none')
-  call one#highlight('Keyword', '', '', 'italic')
-  call one#highlight('DiffAdd', '52ACB8', '', '')
-endif
 
 let g:user_emmet_mode='n'
 let g:user_emmet_leader_key=','
