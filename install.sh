@@ -15,7 +15,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 cd ~/.config
-git clone git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git
+git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git
 mkdir nvim
 cd nvim 
 git clone https://github.com/samridht23/dotfiles.git
