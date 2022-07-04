@@ -10,6 +10,8 @@ yes | sudo pacman -S picom
 yes | sudo pacman -S xclip 
 yes | sudo pacman -S nodejs 
 yes | sudo pacman -S npm
+yes | sudo pacman -S picom
+yes | sudo pacman -S zsh
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -22,3 +24,6 @@ git clone https://github.com/samridht23/dotfiles.git
 cd dotfiles
 mv plugin init.vim coc-settings.json ..
 rm -r -f dotfiles
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
