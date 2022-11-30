@@ -1,29 +1,96 @@
 #!bin/bash
 
-yes | sudo pacman -Syu
-yes | sudo pacman -S curl 
-yes | sudo pacman -S git 
-yes | sudo pacman -S terminator 
-yes | sudo pacman -S feh 
-yes | sudo pacman -S i3 
-yes | sudo pacman -S picom 
-yes | sudo pacman -S xclip 
-yes | sudo pacman -S nodejs 
-yes | sudo pacman -S npm
-yes | sudo pacman -S picom
-yes | sudo pacman -S zsh
+pkg=(
+    'git'
+    'git'
+    'curl'
+    'xclip'
+    'wget'
+    'terminator'
+    'neovim'
+    'jq'
+    'htop'
+    'feh'
+    'neofetch'
+    'openssh'
+    'vlc'
+    'zsh'
+    'zsh-completions'
+    'thunar'
+    'picom'
+    'newsboat'
+    'guake'
+    'discord'
+    'exfat-utils'
+    'gparted'
+    'ntfs-3g'
+    'parted'
+    'rofi'
+    'nodejs'
+    'npm'
+    'yarn'
+    'typescript'
+    'typescript-language-server'
+    'prettier'
+    'go'
+    'gopls'
+    'lua'
+    'lua-language-server'
+    'stylua'
+    'gcc'
+    'clang'
+    'cmake'
+    'astyle'
+    'python'
+    'pyright'
+    'postgresql'
+    'chromium'
+    'firefox'
+    'lollypop'
+    "flameshot"
+    "i3"
+)
 
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-cd ~/.config
-git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git
-mkdir nvim
-cd nvim 
-git clone https://github.com/samridht23/dotfiles.git
-cd dotfiles
-mv plugin init.vim coc-settings.json ..
-rm -r -f dotfiles
+function pause(){
+    read -p "press any key to continue" && echo -e "\n"
+    echo "hi" && echo $?
+}
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+Red='\033[0;31m'
+Green='\033[0;32m'
+Nc='\033[0m' 
+Cyan='\033[0;36m'
+
+installed=()
+notinstalled=()
+
+for pkg in "${pkg[@]}"; do
+    echo -e "${Cyan}INSTALLING:${Nc} ${Green}${pkg}${Nc}"
+    sudo pacman -S "$pkg" --noconfirm 
+    status=$?
+    if test $status != 0 
+    then
+        notinstalled+=(${pkg})
+    else
+        installed+=(${pkg})
+    fi
+done
+
+for pkg in "${pkg[@]}";do
+    status=true
+    for j in "${notinstalled[@]}";do
+        if test ${j} == ${pkg}
+        then
+            status=false
+        fi
+    done
+    if test $status == true
+    then
+        printf "${Cyan}%40s${Nc} ${Green}%10s${Nc}\n" $pkg "Installed"
+    else 
+        printf "${Cyan}%40s${Nc} ${Red}%10s${Nc}\n" $pkg "Error"
+    fi
+
+done
 
