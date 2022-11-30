@@ -53,8 +53,7 @@ pkg=(
 
 
 function pause(){
-    read -p "press any key to continue" && echo -e "\n"
-    echo "hi" && echo $?
+    read -p "Press any key to continue" && echo -e "\n"
 }
 
 Red='\033[0;31m'
@@ -66,7 +65,7 @@ installed=()
 notinstalled=()
 
 for pkg in "${pkg[@]}"; do
-    echo -e "${Cyan}INSTALLING:${Nc} ${Green}${pkg}${Nc}"
+    echo -e "${Cyan}Installing:${Nc} ${Green}${pkg}${Nc}"
     sudo pacman -S "$pkg" --noconfirm 
     status=$?
     if test $status != 0 
