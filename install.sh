@@ -72,7 +72,7 @@ notinstalled=()
 
 for pkg in "${pkg[@]}"; do
     echo -e "${Cyan}Installing:${Nc} ${Green}${pkg}${Nc}"
-    sudo pacman -S "$pkg" --noconfirm --needed
+    sudo pacman -S "$pkg" --noconfirm
     status=$?
     if test $status != 0 
     then
