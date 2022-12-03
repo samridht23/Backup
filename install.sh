@@ -44,6 +44,7 @@ pkg=(
     'python'
     'pyright'
     'postgresql'
+    'transmission-cli'
     'chromium'
     'firefox'
     'lollypop'
