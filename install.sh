@@ -81,8 +81,6 @@ for pkg in "${pkg[@]}"; do
         installed+=(${pkg})
     fi
 done
-# ohmyzsh
-sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 # neovim config
 git clone https://github.com/samridht23/nvim.git ${HOME}/.config
 
@@ -112,4 +110,7 @@ for pkg in "${pkg[@]}";do
         printf "${Cyan}%40s${Nc} ${Red}%10s${Nc}\n" $pkg "Error"
     fi
 done
+
+# ohmyzsh
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
