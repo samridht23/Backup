@@ -18,13 +18,6 @@ pkg=(
     'zsh-completions'
     'thunar'
     'picom'
-    'newsboat'
-    'guake'
-    'discord'
-    'exfat-utils'
-    'gparted'
-    'ntfs-3g'
-    'parted'
     'rofi'
     'nodejs'
     'npm'
@@ -46,7 +39,6 @@ pkg=(
     'postgresql'
     'transmission-cli'
     'firefox'
-    'lollypop'
     "flameshot"
     "i3"
 )
