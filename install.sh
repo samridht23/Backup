@@ -5,6 +5,7 @@ pkg=(
     'git'
     'curl'
     'xclip'
+    'ripgrep'
     'wget'
     'terminator'
     'neovim'
