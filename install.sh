@@ -5,6 +5,7 @@ pkg=(
     'git'
     'curl'
     'xclip'
+    'dmenu'
     'ripgrep'
     'wget'
     'terminator'
@@ -45,6 +46,7 @@ pkg=(
 )
 sudo pacman -Syu
 sudo pacman -Syyu
+
 function pause(){
     read -p "Press any key to continue" && echo -e "\n"
 }
